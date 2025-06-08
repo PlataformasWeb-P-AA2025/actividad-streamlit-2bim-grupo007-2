@@ -1,11 +1,7 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, DateTime, Numeric
-
-from sqlalchemy.orm import relationship
+from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, UniqueConstraint
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import create_engine
-
-# se importa información del archivo configuracion
-from config import cadena_base_datos
+from sqlalchemy.orm import sessionmaker, relationship
+from configuracion import cadena_base_datos 
 
 engine = create_engine(cadena_base_datos)
 Base = declarative_base()
@@ -57,4 +53,7 @@ class Reaccion(Base):
 
     
 
+
 Base.metadata.create_all(engine)
+
+
